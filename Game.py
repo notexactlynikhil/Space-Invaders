@@ -24,7 +24,7 @@ enemyX = []
 enemyY = []
 enemy_vel = []
 enemy_changeY = []
-num_of_enemies = 6
+num_of_enemies = 7
 enemy_invader = []
 
 # background sound
@@ -36,7 +36,7 @@ for i in range(num_of_enemies):
 	enemyX.append(random.randint(0, 735))
 	enemyY.append(random.randint(0, 150))
 	enemy_vel.append(0.8)
-	enemy_changeY.append(40)
+	enemy_changeY.append(45)
 
 # bullet
 # "ready" means it is ready
@@ -142,7 +142,6 @@ while running:
 		# collison check
 		collision = is_collision(enemyX[i], enemyY[i], bulletX, bulletY)
 		if collision:
-			 			
 			death_sound = mixer.Sound('music\\death1.wav')
 			death_sound.play()
 			bulletY = 480
