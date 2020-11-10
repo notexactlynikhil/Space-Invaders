@@ -1,28 +1,25 @@
-import pygame
-import random
-import os 
-import math #for math functions
-from pygame import mixer #for music
+import pygame # to import modules in pygame
+import random # to generate random nums
+import os # for fs management
+import math # for math functions
+from pygame import mixer # for music
 
-#initializes the modules in pygame
+# initializes the modules in pygame
 pygame.init()
 
-#images
+# images
 icon = pygame.image.load(os.path.join("assets","window_logo.png"))
 player_ship = pygame.image.load(os.path.join("assets","player_ship.png"))
 
 background = pygame.image.load(os.path.join("assets","bg.png"))
 bullet = pygame.image.load(os.path.join("assets","bullet.png"))
 
-heartImg = pygame.image.load("assets\\heart.png")
-
-#player
-life = 5
+# player
 playerX = 400-32
 playerY = 490
-player_vel = 1.5
+player_vel = 1.3
 
-#enemy
+# enemy
 enemyX = []
 enemyY = []
 enemy_vel = []
@@ -30,9 +27,9 @@ enemy_changeY = []
 num_of_enemies = 6
 enemy_invader = []
 
-#background sound
+# background sound
 mixer.music.load(os.path.join("music", "bg.wav"))
-mixer.music.play(-1) #minus 1 means loop
+mixer.music.play(-1) # -1 means loop forever
 
 for i in range(num_of_enemies):
 	enemy_invader.append(pygame.image.load(os.path.join("assets","enemy_invader.png")))
@@ -41,20 +38,21 @@ for i in range(num_of_enemies):
 	enemy_vel.append(0.8)
 	enemy_changeY.append(40)
 
-#bullet
-#"ready" means it is ready
-#"firing" the bullet is currently moving
+# bullet
+# "ready" means it is ready
+# "firing" the bullet is currently moving
 bulletX = 0
 bulletY = 490
 bullet_vel = 2
 bullet_state = "ready"
 
+# FONT STYLES
 # score
 font = pygame.font.Font('assets\\Janyss Brush.ttf', 40)
 # game over
 game_over_font = pygame.font.Font("assets\\Janyss Brush.ttf", 68)
-scorex = 10
-scorey = 10
+scoreX = 10
+scoreY = 10
 score_value = 0
 
 def show_score(x, y):
@@ -122,11 +120,9 @@ while running:
 	if playerX >= 800-64:
 		playerX = 800-64
 
-	#automatic enemy movement
-
 	for i in range(num_of_enemies):
 
-		#game over
+		# game over code
 		if enemyY[i] >= 450:
 			for j in range(num_of_enemies):
 				enemyY[j] = 2000
@@ -143,7 +139,7 @@ while running:
 			enemy_vel[i] = -0.8 # '-' for moving left
 
 
-		#collison
+		# collison check
 		collision = is_collision(enemyX[i], enemyY[i], bulletX, bulletY)
 		if collision:
 			 			
@@ -156,7 +152,7 @@ while running:
 			enemyY[i] = random.randint(50, 150)
 		enemy(enemyX[i], enemyY[i], i)
 		
-	#bullet movement
+	# bullet movement
 	if bullet_state is "firing":
 		fire_bullet(bulletX, bulletY)
 		bulletY -= bullet_vel
@@ -164,6 +160,6 @@ while running:
 		bulletY=490
 		bullet_state = "ready"
 
-	show_score(scorex, scorey)
+	show_score(scoreX, scoreY)
 	player(playerX, playerY)
 	pygame.display.update()
