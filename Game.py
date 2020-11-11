@@ -32,7 +32,13 @@ mixer.music.load(os.path.join("music", "bg.wav"))
 mixer.music.play(-1) # -1 means loop forever
 
 for i in range(num_of_enemies):
-	enemy_invader.append(pygame.image.load(os.path.join("assets","enemy_invader.png")))
+	enemy_choice = random.randint(0,2)
+	if enemy_choice == 0:
+		enemy_invader.append(pygame.image.load(os.path.join("assets","enemy_invader.png")))
+	elif enemy_choice == 1:
+		enemy_invader.append(pygame.image.load(os.path.join("assets","enemy2.png")))
+	elif enemy_choice == 2:
+		enemy_invader.append(pygame.image.load(os.path.join("assets","enemy3.png")))
 	enemyX.append(random.randint(0, 735))
 	enemyY.append(random.randint(0, 150))
 	enemy_vel.append(0.8)
