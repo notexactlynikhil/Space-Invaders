@@ -114,7 +114,7 @@ while running:
 		if event.key == pygame.K_LEFT:
 			playerX-=player_vel
 		if event.key == pygame.K_SPACE:
-			if bullet_state is "ready":
+			if bullet_state == "ready":
 				bullet_sound = mixer.Sound('music\\laser.wav')
 				bullet_sound.play()
 				bulletX = playerX
@@ -158,7 +158,7 @@ while running:
 		enemy(enemyX[i], enemyY[i], i)
 		
 	# bullet movement
-	if bullet_state is "firing":
+	if bullet_state == "firing":
 		fire_bullet(bulletX, bulletY)
 		bulletY -= bullet_vel
 	if bulletY+32 <= 0:
