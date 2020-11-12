@@ -94,6 +94,7 @@ def game_over_text():
 	window.blit(game_over_text, (255, 250))
 #the game loop
 running = True
+x_speed = 0
 while running:
 
 	#RGB - Red, Green and Blue
@@ -107,19 +108,24 @@ while running:
 			running = False
 			print("Game exit")
 
-	#if keystroke is pressed and checking
-	if event.type == pygame.KEYDOWN:  
-		if event.key == pygame.K_RIGHT:
-			playerX+=player_vel
-		if event.key == pygame.K_LEFT:
-			playerX-=player_vel
-		if event.key == pygame.K_SPACE:
-			if bullet_state == "ready":
-				bullet_sound = mixer.Sound('music\\laser.wav')
-				bullet_sound.play()
-				bulletX = playerX
-				fire_bullet(bulletX, bulletY)
-
+		#if keystroke is pressed and checking
+		elif event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_RIGHT:
+				x_speed = player_vel
+			elif event.key == pygame.K_LEFT:
+				x_speed = -player_vel
+			elif event.key == pygame.K_SPACE:
+				if bullet_state == "ready":
+					bullet_sound = mixer.Sound('music\\laser.wav')
+					bullet_sound.play()
+					bulletX = playerX
+					fire_bullet(bulletX, bulletY)
+		elif event.type == pygame.KEYUP:
+			if event.key == pygame.K_RIGHT and x_speed > 0:
+				x_speed = 0
+			elif event.key == pygame.K_LEFT and x_speed < 0:
+				x_speed = 0
+	playerX += x_speed
 	#boundary check for player
 	if playerX <= 0:
 		playerX = 0
