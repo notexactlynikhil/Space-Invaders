@@ -4,7 +4,6 @@ import os # for fs management
 import math # for math functions
 from pygame import mixer # for music
 
-# initializes the modules in pygame
 pygame.init()
 
 # images
