@@ -177,4 +177,4 @@ while running:
 	show_score(scoreX, scoreY)
 	player(playerX, playerY)
 	pygame.display.flip()
-	fps_clock(FPS)
+	fps_clock.tick(FPS)
