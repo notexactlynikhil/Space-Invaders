@@ -92,6 +92,9 @@ def is_collision(enemyX, enemyY, bulletX, bulletY):
 def game_over_text():
 	game_over_text = game_over_font.render("GAME OVER", True, (255, 255, 255))
 	window.blit(game_over_text, (255, 250))
+	
+fps_clock = pygame.time.Clock()
+FPS = 210
 #the game loop
 running = True
 x_speed = 0
@@ -173,4 +176,5 @@ while running:
 
 	show_score(scoreX, scoreY)
 	player(playerX, playerY)
-	pygame.display.update()
+	pygame.display.flip()
+	fps_clock(FPS)
