@@ -6,7 +6,7 @@ This is game with GUI made using the modules in Pygame.
 2. After downloading it, extract it.
 3.  You will find a file called start-game.exe in the extracted folder.
 4.  Follow the 3 steps correctly and done! You can ignore everything given below over here>
-== IGNORE UNLESS U WANT THE SOURCE OR DON'T KNOW WHAT I'M TALKING ABOUT ==
+# == IGNORE UNLESS U WANT THE SOURCE OR DON'T KNOW WHAT I'M TALKING ABOUT ==
 # Requirements
 1. Common sense. This is a dev website and I'm spoonfeeding. Ugh.
 2. Python 3.8.0 or above (NOT PYTHON 3.9 AS IT HAS PROBLEMS WITH PYGAME) I would suggest u to click on this link (https://www.python.org/ftp/python/3.8.6/python-3.8.6-amd64.exe) and run the installer. While installing, make sure to check the checkbox which says 'Add python to path'
